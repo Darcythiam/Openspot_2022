@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OpenSpot 2022</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>OpenSpot</h1>
+    <p class="muted">Simple parking availability demo</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <label for="lotSelect">Lot:</label>
+        <select id="lotSelect" aria-label="Select parking lot"></select>
+
+        <label for="statusSelect">Status:</label>
+        <select id="statusSelect" aria-label="Filter by status">
+          <option value="">Any</option>
+          <option value="open">Open</option>
+          <option value="occupied">Occupied</option>
+          <option value="blocked">Blocked</option>
+        </select>
+
+        <button id="refreshBtn">Refresh</button>
+      </div>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+
+      <table id="spacesTable">
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Status</th>
+            <th>Accessible</th>
+            <th>Reserved</th>
+            <th>Quick Action</th>
+          </tr>
+        </thead>
+        <tbody id="spacesBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Recent Activity</h2>
+      <ul id="eventsList" class="list"></ul>
+    </section>
+  </main>
+
+  <footer class="container muted">
+    <small>© 2022–2025 OpenSpot demo</small>
+  </footer>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
