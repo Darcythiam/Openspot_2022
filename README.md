@@ -1,14 +1,15 @@
-# OpenSpot – Smart Parking (Java + MySQL)
+# Openspot_2022
 
-OpenSpot helps list parking spots, check availability, and create/cancel simple reservations.
+Smart parking utilization & compliance (MVP). Java + MySQL + Spring Boot.
 
-## Stack
-- Java 17+, Spring Boot (Web, JDBC), MySQL 8
-- Docker (for local DB)
-- OpenAPI spec in `api/openapi.yaml`
+## What this does
+- Manage **parking lots** and **spots**
+- **Check in** a vehicle (assigns first free spot)
+- **Check out** a vehicle (frees spot, logs a ticket)
+- List lots with **available counts** and list spots per lot
 
-## Quick Start
-1. **Clone**
-   ```bash
-   git clone https://github.com/<you>/openspot-smart-parking.git
-   cd openspot-smart-parking
+## Quick start
+
+### 1) Start MySQL (Docker)
+```bash
+docker compose up -d
