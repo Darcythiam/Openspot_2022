@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OpenSpot (Flask)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header class="container">
+  <h1>OpenSpot — Visitor Pay Lots</h1>
+  <p class="muted">SCSU demo • $0.50 = 30 minutes • Quick-15 spots are first-come/visual only</p>
+</header>
+
+<main class="container">
+  <section class="card">
+    <div class="row">
+      <label for="lotSelect">Lot:</label>
+      <select id="lotSelect"></select>
+
+      <button id="refreshBtn">Refresh Availability</button>
+    </div>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    <table id="spacesTable">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Type</th>
+        <th>Available</th>
+      </tr>
+      </thead>
+      <tbody id="spacesBody"></tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>Pay for a Spot</h2>
+    <div class="grid">
+      <label>Lot</label>
+      <span id="lotName">—</span>
+
+      <label for="spotNumber">Spot #</label>
+      <input id="spotNumber" type="number" min="1" placeholder="e.g., 12" />
+
+      <label for="plate">Plate</label>
+      <input id="plate" type="text" maxlength="16" placeholder="ABC123" />
+
+      <label for="amount">Amount ($)</label>
+      <input id="amount" type="number" min="0.5" step="0.5" value="0.5" />
+    </div>
+    <button id="payBtn">Pay & Start Session</button>
+    <div id="payResult" class="message"></div>
+  </section>
+</main>
+
+<footer class="container muted">
+  <small>© 2022–2025 OpenSpot demo (Flask + PostgreSQL)</small>
+</footer>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>

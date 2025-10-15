@@ -1,32 +1,28 @@
-# OpenSpot_2022
+# OpenSpot 2022 (Flask + PostgreSQL)
 
-Smart, minimal parking lot tracker. One page frontend + Node/Express backend + MySQL schema.
-Lets you list lots, view open/occupied spaces, and record simple occupancy/violation events.
+Visitor pay-lot demo for SCSU. Users pick a lot, see available spots, and pay to occupy a spot.
+Rules:
+- $0.50 buys 30 minutes (only ≥ $0.50, multiples of $0.50).
+- Each lot has **50 normal** spots and **3 quick-15** spots (quick-15 are *not* purchasable here).
+- A spot is unavailable while an active session exists (current time < session end).
 
-## Why this exists
-Campus/municipal lots rarely expose real-time availability. OpenSpot demonstrates a clean, intermediate-level CRUD/queries stack with an auditable event log.
+**Lots:**
+4th Avenue Parking Ramp (Pay Lot), Eastman Pay Lot, Husky Pay Lot, ISELF Pay Lot, Miller Pay Lot, South Pay Lot
 
-## Features
-- List lots and spaces, filter by status (open / occupied / blocked)
-- Record occupancy events (enter, exit, block, unblock)
-- Log and resolve simple permit violations
-- Clean schema with FK constraints and useful indexes
+Campus addr (for docs): 720 4th Ave S, St. Cloud, MN 56301, US.
 
 ## Stack
-- **Frontend:** Vanilla HTML/JS/CSS (no framework)
-- **Backend:** Node.js (Express, mysql2, helmet, cors, morgan)
-- **DB:** MySQL 8+ (InnoDB, utf8mb4)
+- Flask, SQLAlchemy, Flask-Migrate (Alembic)
+- PostgreSQL (psycopg)
+- Vanilla HTML/CSS/JS frontend (fetch API)
+- Gunicorn for prod
 
-## Quick start
-
-### 1) Prereqs
-- Node 18+  
-- MySQL 8+
-
-### 2) Clone & install
+## Quick Start (Docker)
 ```bash
-git clone https://github.com/Darcythiam/Openspot_2022.git
-cd Openspot_2022
-npm install
+git clone https://github.com/Darcythiam/Openspot_2022_flask.git
+cd Openspot_2022_flask
+cp .env.example .env
+docker compose up --build
+
 
 

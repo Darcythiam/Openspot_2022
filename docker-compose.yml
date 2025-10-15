@@ -1,0 +1,25 @@
+
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: openspot_2022
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/schema.pg.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./db/seed.pg.sql:/docker-entrypoint-initdb.d/02_seed.sql:ro
+
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file: .env
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
