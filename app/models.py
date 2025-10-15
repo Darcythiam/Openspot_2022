@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from sqlalchemy import UniqueConstraint, CheckConstraint, Index
+from sqlalchemy.dialects.postgresql import UUID
 from .extensions import db
 
 UTC = timezone.utc
@@ -21,7 +22,8 @@ class Space(db.Model):
 
 class ParkingSession(db.Model):
     __tablename__ = "parking_sessions"
-    session_id = db.Column(db.Uuid, primary_key=True, server_default=db.text("uuid_generate_v4()"))
+    session_id = db.Column(UUID(as_uuid=True), primary_key=True,
+                           server_default=db.text("uuid_generate_v4()"))
     space_id = db.Column(db.Integer, db.ForeignKey("spaces.space_id", ondelete="CASCADE"), nullable=False)
     plate = db.Column(db.String(16), nullable=False)
     amount_cents = db.Column(db.Integer, nullable=False)
