@@ -1,0 +1,30 @@
+# Python cache and venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+env/
+venv/
+
+# Environment & config
+.env
+*.sqlite3
+
+# Git & IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Node or frontend dependencies
+node_modules/
+npm-debug.log*
+
+# Build & Docker artifacts
+Dockerfile
+docker-compose.yml
+
+# OS / misc
+.DS_Store
+Thumbs.db

@@ -28,5 +28,5 @@ CREATE TABLE IF NOT EXISTS parking_sessions (
 );
 
 -- helpful index for "active" checks
-CREATE INDEX IF NOT EXISTS idx_sessions_active ON parking_sessions (space_id, end_time)
-  WHERE end_time > NOW();
+-- (no predicate, because NOW() is not IMMUTABLE; planner can still use the range)
+CREATE INDEX IF NOT EXISTS idx_sessions_end_time ON parking_sessions (space_id, end_time);

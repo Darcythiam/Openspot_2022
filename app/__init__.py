@@ -9,8 +9,11 @@ from .routes.sessions import sessions_bp
 
 def create_app():
     app = Flask(__name__, static_folder="../client", static_url_path="/")
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "postgresql+psycopg://localhost/openspot_2022")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
+        "DATABASE_URL", "postgresql+psycopg://postgres:postgres@db:5432/openspot_2022"
+    )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev")
 
     CORS(app, resources={r"/api/*": {"origins": "*"}})
