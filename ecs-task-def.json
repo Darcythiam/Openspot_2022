@@ -4,11 +4,11 @@
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
   "memory": "1024",
-  "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::820242938029:role/ecsTaskExecutionRole-openspot",
   "containerDefinitions": [
     {
       "name": "openspot",
-      "image": "<820242938029>.dkr.ecr.<us-east-2.>.amazonaws.com/openspot:latest",
+      "image": "820242938029.dkr.ecr.us-east-1.amazonaws.com/openspot:latest",
       "essential": true,
       "portMappings": [
         { "containerPort": 5000, "protocol": "tcp" }
@@ -17,7 +17,7 @@
         "logDriver": "awslogs",
         "options": {
           "awslogs-group": "/ecs/openspot",
-          "awslogs-region": "<REGION>",
+          "awslogs-region": "us-east-1",
           "awslogs-stream-prefix": "ecs"
         }
       }
